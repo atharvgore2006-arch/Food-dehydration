@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --green-50: #f0fdf4;
+  --green-100: #dcfce7;
+  --green-200: #bbf7d0;
+  --green-300: #86efac;
+  --green-400: #4ade80;
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --green-700: #15803d;
+  --green-800: #166534;
+  --green-900: #14532d;
+  --green-950: #052e16;
+
+  --earth-50: #fafaf9;
+  --earth-100: #f5f5f4;
+  --earth-200: #e7e5e4;
+  --earth-300: #d6d3d1;
+  --earth-400: #a8a29e;
+  --earth-500: #78716c;
+  --earth-600: #57534e;
+  --earth-700: #44403c;
+  --earth-800: #292524;
+  --earth-900: #1c1917;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--earth-50);
+  color: var(--earth-900);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; }
+
+/* ── Layout helpers ── */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+@media(min-width:640px){ .container{ padding: 0 1.5rem; } }
+@media(min-width:1024px){ .container{ padding: 0 2rem; } }
+
+.flex-col-grow { display: flex; flex-direction: column; min-height: 100vh; }
+.flex-grow-1 { flex-grow: 1; }
+
+/* ── Hero Background ── */
+.hero-bg {
+  background-image: linear-gradient(rgba(21,128,61,0.72), rgba(42,30,27,0.82)),
+    url('https://images.unsplash.com/photo-1596647466827-02ebf91b5d19?q=80&w=2670&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* ── Animations ── */
+.fade-in-up { animation: fadeInUp 0.75s ease-out both; }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in { animation: fadeIn 0.6s ease-out both; }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.stagger > *:nth-child(1) { animation: fadeInUp 0.7s ease-out 0.05s both; }
+.stagger > *:nth-child(2) { animation: fadeInUp 0.7s ease-out 0.15s both; }
+.stagger > *:nth-child(3) { animation: fadeInUp 0.7s ease-out 0.25s both; }
+.stagger > *:nth-child(4) { animation: fadeInUp 0.7s ease-out 0.35s both; }
+
+.card-hover { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -12px rgba(22,163,74,0.2); }
+
+.mobile-nav { animation: slideDown 0.25s ease-out both; }
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-enter { animation: pageFade 0.4s ease both; }
+@keyframes pageFade {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Focus ── */
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible {
+  outline: 2px solid var(--green-600);
+  outline-offset: 2px;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--green-50); }
+::-webkit-scrollbar-thumb { background: var(--green-300); border-radius: 99px; }
+
+/* ── Pulse animation ── */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.animate-pulse { animation: pulse 2s cubic-bezier(0.4,0,0.6,1) infinite; }
